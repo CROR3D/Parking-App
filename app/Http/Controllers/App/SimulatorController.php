@@ -7,5 +7,8 @@ use App\Http\Controllers\Controller;
 
 class SimulatorController extends Controller
 {
-    return view('simulator.parking');
+    public function index()
+    {
+        return view('simulator.parking');
+    }
 }
