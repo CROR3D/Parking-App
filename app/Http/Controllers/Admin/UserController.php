@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Mail;
 use Sentinel;
@@ -9,6 +9,7 @@ use Centaur\AuthManager;
 use Illuminate\Http\Request;
 use Centaur\Mail\CentaurWelcomeEmail;
 use Cartalyst\Sentinel\Users\IlluminateUserRepository;
+use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
@@ -41,7 +42,7 @@ class UserController extends Controller
     {
         $users = $this->userRepository->createModel()->with('roles')->paginate(15);
 
-        return view('Centaur::users.index', ['users' => $users]);
+        return view('Centaur::admin.users.index', ['users' => $users]);
     }
 
     /**
@@ -53,7 +54,7 @@ class UserController extends Controller
     {
         $roles = app()->make('sentinel.roles')->createModel()->all();
 
-        return view('Centaur::users.create', ['roles' => $roles]);
+        return view('Centaur::admin.users.create', ['roles' => $roles]);
     }
 
     /**
@@ -73,9 +74,7 @@ class UserController extends Controller
         // Assemble registration credentials and attributes
         $credentials = [
             'email' => trim($request->get('email')),
-            'password' => $request->get('password'),
-            'first_name' => $request->get('first_name', null),
-            'last_name' => $request->get('last_name', null)
+            'password' => $request->get('password')
         ];
         $activate = (bool)$request->get('activate', false);
 
@@ -134,7 +133,7 @@ class UserController extends Controller
         $roles = app()->make('sentinel.roles')->createModel()->all();
 
         if ($user) {
-            return view('Centaur::users.edit', [
+            return view('Centaur::admin.users.edit', [
                 'user' => $user,
                 'roles' => $roles
             ]);
@@ -161,9 +160,7 @@ class UserController extends Controller
 
         // Assemble the updated attributes
         $attributes = [
-            'email' => trim($request->get('email')),
-            'first_name' => $request->get('first_name', null),
-            'last_name' => $request->get('last_name', null)
+            'email' => trim($request->get('email'))
         ];
 
         // Do we need to update the password as well?

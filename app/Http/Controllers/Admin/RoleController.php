@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Cartalyst\Sentinel\Users\IlluminateUserRepository;
+use App\Http\Controllers\Controller;
 
 class RoleController extends Controller
 {
@@ -32,7 +33,7 @@ class RoleController extends Controller
         $roles = $this->roleRepository->createModel()->all();
         $userRoleIds = Sentinel::getUser()->roles()->pluck('id');
 
-        return view('Centaur::roles.index')
+        return view('Centaur::admin.roles.index')
             ->with('userRoleIds', $userRoleIds)
             ->with('roles', $roles);
     }
@@ -44,7 +45,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('Centaur::roles.create');
+        return view('Centaur::admin.roles.create');
     }
 
     /**
@@ -96,7 +97,7 @@ class RoleController extends Controller
     {
         // The roles detail page has not been included for the sake of brevity.
         // Change this to point to the appropriate view for your project.
-        return redirect()->route('roles.index');
+        return redirect()->route('admin.roles.index');
     }
 
     /**
@@ -112,7 +113,7 @@ class RoleController extends Controller
         $role = $this->roleRepository->findById($id);
 
         if ($role) {
-            return view('Centaur::roles.edit')
+            return view('Centaur::admin.roles.edit')
                 ->with('role', $role);
         }
 

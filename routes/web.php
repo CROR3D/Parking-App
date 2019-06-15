@@ -34,12 +34,38 @@ Route::get('password/reset', 'Auth\PasswordController@getRequest')->name('auth.p
 Route::post('password/reset', 'Auth\PasswordController@postRequest')->name('auth.password.request.attempt');
 
 // Users
-Route::resource('users', 'UserController');
+Route::resource('users', 'Admin\UserController');
 
 // Roles
-Route::resource('roles', 'RoleController');
+Route::resource('roles', 'Admin\RoleController');
 
 // Dashboard
 Route::get('dashboard', function () {
-    return view('Centaur::dashboard');
+    return view('Centaur::user.dashboard');
 })->name('dashboard');
+
+// Navbar
+Route::get('view',
+    ['as' => 'view', 'uses' => 'SelectController@select', 'middleware' => 'sentinel.auth']);
+Route::post('view',
+    ['as' => 'view_form', 'uses' => 'SelectController@get_parking']);
+
+Route::get('view/{slug}',
+    ['as' => 'parking_view', 'uses' => 'SelectController@view_parking', 'middleware' => 'sentinel.auth']);
+Route::post('view/{slug}',
+    ['as' => 'view_forms', 'uses' => 'ReservationsController@reservations']);
+
+Route::get('create',
+    'ParkingsController@create_form');
+Route::post('create',
+    ['as' => 'create', 'uses' => 'ParkingsController@create']);
+
+Route::get('update',
+    ['as' => 'update', 'uses' => 'SelectController@select', 'middleware' => 'sentinel.auth']);
+Route::post('update',
+    ['as' => 'update_select', 'uses' => 'ParkingsController@update_view']);
+
+Route::get('update/{slug}',
+    ['as' => 'update_fill', 'uses' => 'ParkingsController@update_parking', 'middleware' => 'sentinel.auth']);
+Route::post('update/{slug}',
+    ['as' => 'update_form', 'uses' => 'ParkingsController@update_form']);

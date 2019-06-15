@@ -9,6 +9,8 @@
     </head>
 
     <body>
+        @include('shared.partials.navbar')
+
         @yield('content')
 
         @stack('script')

@@ -1,6 +1,6 @@
-@extends('Centaur::layout')
+@extends('shared.layout')
 
-@section('title', 'Dashboard')
+@section('sub-title', ' - Dashboard')
 
 @section('content')
 <div class="row">
@@ -19,8 +19,6 @@
 
     <?php
         $user = Sentinel::findById(1);
-
-        // var_dump(Activation::create($user));
     ?>
 </div>
 @stop
