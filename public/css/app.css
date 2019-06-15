@@ -49,6 +49,12 @@ html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background-color: #ccae62;
+  background: url('../images/background.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 article,
@@ -4363,7 +4369,7 @@ input[type=button].btn-block {
 
 .navbar-brand {
   display: inline-block;
-  padding-top: 0.32rem;
+  padding-top: 0;
   padding-bottom: 0.32rem;
   margin-right: 1rem;
   font-size: 1.125rem;
@@ -10645,4 +10651,3 @@ a.text-dark:focus {
     border-color: #dee2e6;
   }
 }
-

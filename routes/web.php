@@ -46,9 +46,9 @@ Route::get('dashboard', function () {
 
 // Navbar
 Route::get('view',
-    ['as' => 'view', 'uses' => 'SelectController@select', 'middleware' => 'sentinel.auth']);
+    ['as' => 'view', 'uses' => 'App/NavigationController@selectParking', 'middleware' => 'sentinel.auth']);
 Route::post('view',
-    ['as' => 'view_form', 'uses' => 'SelectController@get_parking']);
+    ['as' => 'view_form', 'uses' => 'App/NavigationController@getParking']);
 
 Route::get('view/{slug}',
     ['as' => 'parking_view', 'uses' => 'SelectController@view_parking', 'middleware' => 'sentinel.auth']);

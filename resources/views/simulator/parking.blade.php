@@ -7,5 +7,5 @@
 @stop
 
 @push('script')
-    <script src="/js/app.js" type="text/javascript"></script>
+    
 @endpush
