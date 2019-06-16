@@ -78,7 +78,7 @@ body {
   line-height: 1.6;
   color: #212529;
   text-align: left;
-  background-color: #f8fafc;
+  background-color: rgba(0, 0, 0, 0) !important;
 }
 
 [tabindex="-1"]:focus {
@@ -4353,10 +4353,13 @@ input[type=button].btn-block {
 .navbar {
   position: relative;
   display: flex;
+  height: 4.5rem;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  background-color: rgba(20, 20, 20, 0.3);
 }
 
 .navbar > .container,
@@ -4370,9 +4373,9 @@ input[type=button].btn-block {
 .navbar-brand {
   display: inline-block;
   padding-top: 0;
-  padding-bottom: 0.32rem;
+  padding-bottom: 0.20rem;
   margin-right: 1rem;
-  font-size: 1.125rem;
+  font-size: 1.5rem;
   line-height: inherit;
   white-space: nowrap;
 }
@@ -10650,4 +10653,22 @@ a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6;
   }
+}
+
+#login-dp{
+    min-width: 250px;
+    padding: 20px;
+    overflow:hidden;
+    background-color:rgba(255,255,255,.8);
+}
+
+.forgot-password {
+    -webkit-appearance: none;
+}
+
+@media(max-width:768px){
+    #login-dp{
+        background-color: inherit;
+        color: #fff;
+    }
 }

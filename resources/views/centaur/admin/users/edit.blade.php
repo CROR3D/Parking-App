@@ -1,6 +1,6 @@
-@extends('Centaur::layout')
+@extends('shared.layout')
 
-@section('title', 'Edit User')
+@section('sub-title', ' - Edit User')
 
 @section('content')
 <div class="row">

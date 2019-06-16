@@ -1,6 +1,6 @@
-@extends('Centaur::layout')
+@extends('shared.layout')
 
-@section('title', 'Resend Activation Instructions')
+@section('sub-title', ' - Reset Your Password')
 
 @section('content')
 <div class="row">

@@ -1,6 +1,6 @@
-@extends('Centaur::layout')
+@extends('shared.layout')
 
-@section('title', 'Users')
+@section('sub-title', ' - Users')
 
 @section('content')
     <div class="page-header">
