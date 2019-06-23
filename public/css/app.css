@@ -1,4 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Nunito);
+@import url('https://fonts.googleapis.com/css?family=Roboto:300&display=swap');
+@charset "UTF-8";
 
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
@@ -45,16 +47,20 @@
 }
 
 html {
+  height: 100%;
   font-family: sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  background-color: #ccae62;
-  background: url('../images/background.jpg') no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  background-color: #f8f9fa;
+}
+
+.app-background {
+    background: url('../images/background.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 article,
@@ -71,8 +77,9 @@ section {
 }
 
 body {
+  height: 100%;
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
@@ -457,6 +464,7 @@ h6,
   font-size: 3.5rem;
   font-weight: 300;
   line-height: 1.2;
+  font-family: 'Nunito', sans-serif;
 }
 
 hr {
@@ -4359,7 +4367,6 @@ input[type=button].btn-block {
   justify-content: space-between;
   padding: 0.5rem 1rem;
   font-size: 1.1rem;
-  background-color: rgba(20, 20, 20, 0.3);
 }
 
 .navbar > .container,
@@ -4378,6 +4385,7 @@ input[type=button].btn-block {
   font-size: 1.5rem;
   line-height: inherit;
   white-space: nowrap;
+  font-family: 'Nunito', sans-serif;
 }
 
 .navbar-brand:hover,
@@ -4407,6 +4415,8 @@ input[type=button].btn-block {
   display: inline-block;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  margin-right: 1.2rem;
+  margin-bottom: 0 !important;
 }
 
 .navbar-collapse {
@@ -10664,6 +10674,43 @@ a.text-dark:focus {
 
 .forgot-password {
     -webkit-appearance: none;
+}
+
+.city-parking {
+    margin-top: 17%;
+}
+
+.city-parking .jumbotron {
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 2rem;
+    text-shadow: 1px 1px grey;
+    color: #fff;
+}
+
+.content-slider-left,
+.content-slider-right {
+    display: inline-block;
+    background-color: rgba(255, 255, 2555, 1);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.content-slider-left {
+    position: absolute;
+    width: 30%;
+    opacity: 0;
+    top: 30%;
+    left: -60%;
+    z-index: 30;
+}
+
+.content-slider-right {
+    position: absolute;
+    width: 20%;
+    opacity: 0;
+    z-index: 50;
+    top: 30%;
+    left: 160%;
 }
 
 @media(max-width:768px){

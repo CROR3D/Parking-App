@@ -7,13 +7,8 @@ use App\Http\Controllers\Controller;
 
 class NavigationController extends Controller
 {
-    public function selectParking()
+    public function index()
     {
-        
-    }
-
-    public function getParking()
-    {
-
+        return view('index');
     }
 }
