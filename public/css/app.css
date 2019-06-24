@@ -10669,7 +10669,7 @@ a.text-dark:focus {
     min-width: 250px;
     padding: 20px;
     overflow:hidden;
-    background-color:rgba(255,255,255,.8);
+    background-color:rgba(255,255,255, 0.8);
 }
 
 .forgot-password {
@@ -10681,36 +10681,29 @@ a.text-dark:focus {
 }
 
 .city-parking .jumbotron {
-    background-color: rgba(0, 0, 0, 0);
+    background-color: transparent;
     font-size: 2rem;
     text-shadow: 1px 1px grey;
     color: #fff;
 }
 
-.content-slider-left,
-.content-slider-right {
-    display: inline-block;
-    background-color: rgba(255, 255, 2555, 1);
+.track-slider {
+    width: 0;
+    height: 5px;
+    margin-top: 80px;
+    background-color: rgba(52, 144, 220, 0.7);
+    opacity: 0;
+}
+
+.content-slider {
+    opacity: 0;
+    height: 0;
+    margin-top: 50px;
     padding: 20px;
+    color: #fff;
+    background-color: rgba(135, 135, 135, 0.4);
+    border: 1px solid grey;
     border-radius: 5px;
-}
-
-.content-slider-left {
-    position: absolute;
-    width: 30%;
-    opacity: 0;
-    top: 30%;
-    left: -60%;
-    z-index: 30;
-}
-
-.content-slider-right {
-    position: absolute;
-    width: 20%;
-    opacity: 0;
-    z-index: 50;
-    top: 30%;
-    left: 160%;
 }
 
 @media(max-width:768px){

@@ -11,7 +11,7 @@
 <div class="form-group">
     <label for="select2">Select Parking</label>
         <select class="form-control" name="select_parking" id="select2" disabled>
-            <option>---</option>
+            <option></option>
             @foreach($parking_list as $parking)
                   <option name="{{ $parking->slug }}" class="dropdown-item" value="{{ $parking_values[$parking->slug] }}">{{ $parking->name }}</option>
             @endforeach

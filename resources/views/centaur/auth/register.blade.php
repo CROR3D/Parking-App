@@ -21,11 +21,11 @@
             <p class="lead">Modern parking solutions</p>
         </div>
         <div class="mt-5">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Register</h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Register</h3>
                 </div>
-                <div class="panel-body">
+                <div class="col-md-6 offset-md-3">
                     <form accept-charset="UTF-8" role="form" method="post" action="{{ route('auth.register.attempt') }}">
                     <fieldset>
                         <div class="form-group {{ ($errors->has('email')) ? 'has-error' : '' }}">
