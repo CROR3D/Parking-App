@@ -44,16 +44,28 @@ Route::get('dashboard', function () {
     return view('Centaur::user.dashboard');
 })->name('dashboard');
 
-// Navbar
+// Simulator
 Route::get('simulator',
     ['as' => 'simulator', 'uses' => 'App\ParkingsController@selectParking']);
 Route::post('simulator',
-    ['as' => 'simulator_select', 'uses' => 'App\SimulatorController@startParkingSimulation']);
+    ['as' => 'form_simulator', 'uses' => 'App\SimulatorController@startParkingSimulation']);
+
+Route::get('simulator/help',
+    ['as' => 'simulator_help', 'uses' => 'SelectController@helper']);
+
+Route::get('simulator/{slug}',
+    ['as' => 'parking_select', 'uses' => 'SelectController@view_parking']);
+Route::post('simulator/{slug}',
+    ['as' => 'simulator_forms', 'uses' => 'SimulatorController@parking_form']);
+
+// Navbar
+Route::get('dashboard',
+    ['as' => 'dashboard', 'uses' => 'App\NavigationController@dashboard', 'middleware' => 'sentinel.auth']);
 
 Route::get('view',
     ['as' => 'view', 'uses' => 'App\ParkingsController@selectParking', 'middleware' => 'sentinel.auth']);
 Route::post('view',
-    ['as' => 'view_form', 'uses' => 'App\ParkingsController@getParking']);
+    ['as' => 'form_view_parking', 'uses' => 'App\ParkingsController@getParking']);
 
 Route::get('view/{slug}',
     ['as' => 'parking_view', 'uses' => 'SelectController@view_parking', 'middleware' => 'sentinel.auth']);
@@ -74,17 +86,3 @@ Route::get('update/{slug}',
     ['as' => 'update_fill', 'uses' => 'ParkingsController@update_parking', 'middleware' => 'sentinel.auth']);
 Route::post('update/{slug}',
     ['as' => 'update_form', 'uses' => 'ParkingsController@update_form']);
-
-// Simulator
-Route::get('simulator',
-    ['as' => 'simulator', 'uses' => 'App\ParkingsController@selectParking']);
-Route::post('simulator',
-    ['as' => 'post_simulator', 'uses' => 'SimulatorController@startParkingSimulation']);
-
-Route::get('simulator/help',
-    ['as' => 'simulator_help', 'uses' => 'SelectController@helper']);
-
-Route::get('simulator/{slug}',
-    ['as' => 'parking_select', 'uses' => 'SelectController@view_parking']);
-Route::post('simulator/{slug}',
-    ['as' => 'simulator_forms', 'uses' => 'SimulatorController@parking_form']);

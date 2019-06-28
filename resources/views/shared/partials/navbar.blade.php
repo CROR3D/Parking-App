@@ -13,7 +13,7 @@
                 </li>
                 @if (Sentinel::check())
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('/dashboard') ? 'active' : '' }}" href="#">Dashboard</a>
+                    <a class="nav-link {{ Request::is('/dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">Dashboard</a>
                 </li>
                 @endif
                 @if (Sentinel::check() && !Sentinel::inRole('administrator'))

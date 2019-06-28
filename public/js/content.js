@@ -1,6 +1,7 @@
 $(document).ready(function() {
     callContentSliders();
     dropdownParking();
+    dashboardContent();
 });
 
 function callContentSliders() {
@@ -18,9 +19,8 @@ function callContentSliders() {
 }
 
 function dropdownParking() {
-
-    $("#select1").click(function(event) {
-        event.preventDefault();
+    $("#select1").click(function(e) {
+        e.preventDefault();
 
         if($(this).val() == '---') {
             $('#select2').prop("disabled", true);
@@ -42,5 +42,17 @@ function dropdownParking() {
     $("#select2").change(function() {
         var slug = $('#select2').find(':selected').attr('name');
         $('button[name=select]').val(slug);
+    });
+}
+
+function dashboardContent() {
+    $(".sw-content").click(function(e) {
+        var parentId = e.target.parentNode.parentNode.id;
+        var toggledContent = (parentId == 'user-info') ? 'app-analysis' : 'user-info';
+        $(`#${parentId}`).fadeOut(1000);
+        setTimeout(
+          function() {
+              $(`#${toggledContent}`).fadeIn(1000);
+         }, 1000);
     });
 }

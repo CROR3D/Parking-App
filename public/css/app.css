@@ -10695,15 +10695,38 @@ a.text-dark:focus {
     opacity: 0;
 }
 
-.content-slider {
-    opacity: 0;
-    height: 0;
+.content-slider,
+.content-section {
     margin-top: 50px;
     padding: 20px;
     color: #fff;
     background-color: rgba(135, 135, 135, 0.4);
     border: 1px solid grey;
     border-radius: 5px;
+}
+
+.content-slider {
+    opacity: 0;
+    height: 0;
+}
+
+.btn-dashboard-info,
+.btn-dashboard-yellow {
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.btn-dashboard-yellow {
+    border: 1px solid #ffed4a;
+}
+
+.btn-dashboard-info {
+    border: 1px solid #6cb2eb;
+}
+
+#app-analysis {
+    display: none;
 }
 
 @media(max-width:768px){

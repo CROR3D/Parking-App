@@ -14,6 +14,6 @@ class SimulatorController extends Controller
 
     public function startParkingSimulation()
     {
-        
+        return view('simulator.parking');
     }
 }
