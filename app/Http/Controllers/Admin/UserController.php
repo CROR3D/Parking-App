@@ -42,7 +42,23 @@ class UserController extends Controller
     {
         $users = $this->userRepository->createModel()->with('roles')->paginate(15);
 
-        return view('Centaur::admin.users.index', ['users' => $users]);
+        $adminList = $moderatorList = $subList = [];
+
+        foreach ($users as $user) {
+            switch($user->roles->first()->name) {
+                case "Administrator":
+                    array_push($adminList, $user);
+                break;
+                case "Moderator":
+                    array_push($moderatorList, $user);
+                break;
+                default:
+                    array_push($subList, $user);
+                break;
+            }
+        }
+
+        return view('Centaur::admin.users.index', ['adminList' => $adminList, 'moderatorList' => $moderatorList, 'subList' => $subList]);
     }
 
     /**

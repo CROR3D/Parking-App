@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="table-responsive">
-                <table>
+                <table  cellpadding="10">
                     <thead>
                         <tr>
                             <th>Name</th>

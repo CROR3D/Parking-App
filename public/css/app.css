@@ -10725,6 +10725,11 @@ a.text-dark:focus {
     border: 1px solid #6cb2eb;
 }
 
+.border-btm {
+    padding-bottom: 10px !important;
+    border-bottom: 1px solid #6cb2eb;
+}
+
 #app-analysis {
     display: none;
 }

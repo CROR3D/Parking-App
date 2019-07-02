@@ -4,5 +4,5 @@
         <option class="dropdown-item" value="">ENGLISH (EN)</option>
         <option class="dropdown-item" value="">HRVATSKI (CRO)</option>
     </select>
-    <a class="btn btn-block btn-info" href="{{ route('simulator_help') }}">CHECK HELPER</a>
+    <a class="btn btn-block btn-info" href="{{ route('help_simulator') }}">CHECK HELPER</a>
 </div>

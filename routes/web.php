@@ -11,8 +11,6 @@
 |
 */
 
-Route::get('/', 'App\NavigationController@index');
-
 // Authorization
 Route::get('login', 'Auth\SessionController@getLogin')->name('auth.login.form');
 Route::post('login', 'Auth\SessionController@postLogin')->name('auth.login.attempt');
@@ -39,50 +37,33 @@ Route::resource('users', 'Admin\UserController');
 // Roles
 Route::resource('roles', 'Admin\RoleController');
 
-// Dashboard
-Route::get('dashboard', function () {
-    return view('Centaur::user.dashboard');
-})->name('dashboard');
-
 // Simulator
-Route::get('simulator',
-    ['as' => 'simulator', 'uses' => 'App\ParkingsController@selectParking']);
-Route::post('simulator',
-    ['as' => 'form_simulator', 'uses' => 'App\SimulatorController@startParkingSimulation']);
-
-Route::get('simulator/help',
-    ['as' => 'simulator_help', 'uses' => 'SelectController@helper']);
-
-Route::get('simulator/{slug}',
-    ['as' => 'parking_select', 'uses' => 'SelectController@view_parking']);
-Route::post('simulator/{slug}',
-    ['as' => 'simulator_forms', 'uses' => 'SimulatorController@parking_form']);
+Route::prefix('simulator')->group(function () {
+    Route::get('/', ['as' => 'simulator', 'uses' => 'App\ParkingsController@selectParking']);
+    Route::post('/', ['as' => 'form_simulator', 'uses' => 'App\SimulatorController@startParkingSimulation']);
+    Route::get('/help', ['as' => 'help_simulator', 'uses' => 'SelectController@helper']);
+    Route::get('/{slug}', ['as' => 'parking_simulator', 'uses' => 'SelectController@view_parking']);
+});
 
 // Navbar
+Route::get('/', 'App\NavigationController@index');
+
 Route::get('dashboard',
     ['as' => 'dashboard', 'uses' => 'App\NavigationController@dashboard', 'middleware' => 'sentinel.auth']);
 
-Route::get('view',
-    ['as' => 'view', 'uses' => 'App\ParkingsController@selectParking', 'middleware' => 'sentinel.auth']);
-Route::post('view',
-    ['as' => 'form_view_parking', 'uses' => 'App\ParkingsController@getParking']);
-
-Route::get('view/{slug}',
-    ['as' => 'parking_view', 'uses' => 'SelectController@view_parking', 'middleware' => 'sentinel.auth']);
-Route::post('view/{slug}',
-    ['as' => 'view_forms', 'uses' => 'ReservationsController@reservations']);
+Route::prefix('view')->group(function () {
+    Route::get('/', ['as' => 'view_parking', 'uses' => 'App\ParkingsController@selectParking', 'middleware' => 'sentinel.auth']);
+    Route::post('/', ['as' => 'form_view_parking', 'uses' => 'App\ParkingsController@getParking']);
+    Route::get('/{slug}', ['as' => 'view_parking_lot', 'uses' => 'SelectController@view_parking', 'middleware' => 'sentinel.auth']);
+    Route::post('/{slug}', ['as' => 'reservation_parking', 'uses' => 'ReservationsController@reservations']);
+});
 
 Route::get('create',
-    'ParkingsController@create_form');
+    ['as' => 'create_parking', 'uses' => 'App\ParkingsController@create']);
 Route::post('create',
-    ['as' => 'create', 'uses' => 'ParkingsController@create']);
+    ['as' => 'store_parking', 'uses' => 'App\ParkingsController@store']);
 
-Route::get('update',
-    ['as' => 'update', 'uses' => 'SelectController@select', 'middleware' => 'sentinel.auth']);
-Route::post('update',
-    ['as' => 'update_select', 'uses' => 'ParkingsController@update_view']);
-
-Route::get('update/{slug}',
-    ['as' => 'update_fill', 'uses' => 'ParkingsController@update_parking', 'middleware' => 'sentinel.auth']);
-Route::post('update/{slug}',
-    ['as' => 'update_form', 'uses' => 'ParkingsController@update_form']);
+Route::prefix('update')->group(function () {
+    Route::get('/{id}', ['as' => 'edit_parking', 'uses' => 'App\ParkingsController@edit', 'middleware' => 'sentinel.auth']);
+    Route::post('/{id}', ['as' => 'update_parking', 'uses' => 'App\ParkingsController@update']);
+});

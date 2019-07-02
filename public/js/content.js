@@ -41,7 +41,7 @@ function dropdownParking() {
 
     $("#select2").change(function() {
         var slug = $('#select2').find(':selected').attr('name');
-        $('button[name=select]').val(slug);
+        $('button[name=selected]').val(slug);
     });
 }
 

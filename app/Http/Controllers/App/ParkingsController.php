@@ -25,18 +25,16 @@ class ParkingsController extends Controller
 
         $uri = $request->path();
 
+        $page_data = [
+            'form_action' => 'form_view_parking',
+            'page_title' => 'Select Parking Lot',
+            'button_text' => 'VIEW PARKING'
+        ];
+
         if($uri == 'simulator') {
-            $page_data = [
-                'form_action' => 'form_simulator',
-                'page_title' => 'Parking Simulator',
-                'button_text' => 'ENTER PARKING'
-            ];
-        } else {
-            $page_data = [
-                'form_action' => 'form_view_parking',
-                'page_title' => 'Select Parking Lot',
-                'button_text' => 'VIEW PARKING'
-            ];
+            $page_data['form_action'] = 'form_simulator';
+            $page_data['page_title'] = 'Parking Simulator';
+            $page_data['button_text'] = 'ENTER PARKING';
         }
 
         $database_parking_list = [
@@ -51,6 +49,26 @@ class ParkingsController extends Controller
     }
 
     public function getParking()
+    {
+        dd($_POST);
+    }
+
+    public function create()
+    {
+        return view('centaur.admin.parkings.create');
+    }
+
+    public function store($id)
+    {
+
+    }
+
+    public function edit($id)
+    {
+        return view('centaur.admin.parkings.update');
+    }
+
+    public function update($id)
     {
 
     }
