@@ -28,8 +28,8 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="parkingsDropdown">
                         <a class="dropdown-item {{ Request::is('/view') ? 'active' : '' }}" href="{{ route('view_parking') }}">View</a>
-                        <a class="dropdown-item {{ Request::is('/create*') ? 'active' : '' }}" href="{{ route('create_parking') }}">Create</a>
-                        <a class="dropdown-item {{ Request::is('/update/{id}') ? 'active' : '' }}" href="{{ route('edit_parking', 'id') }}">Update</a>
+                        <a class="dropdown-item {{ Request::is('/register*') ? 'active' : '' }}" href="{{ route('register_edit_parking') }}">Register</a>
+                        <a class="dropdown-item {{ Request::is('/update*') ? 'active' : '' }}" href="{{ route('edit_parking') }}">Update</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">

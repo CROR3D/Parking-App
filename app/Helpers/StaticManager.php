@@ -11,26 +11,26 @@ class StaticManager
 {
     public function deleteExpiredReservations() {
 
-        $expire_time = Carbon::now();
-        $expire = Reservation::where('expire_time', '<', $expire_time)->get();
+        $now = Carbon::now();
+        $expired_reservations = Reservation::where('expire_time', '<', $now)->get();
 
-        if($expire) {
-            foreach($expire as $value) {
-                if($value->penalty) {
+        if($expired_reservations) {
+            foreach($expired_reservations as $reservation) {
+                if($reservation->penalty) {
 
-                    $user_res = User::findOrFail($value->user_id);
-                    $parking_res = Parking::findOrFail($value->parking_id);
-                    $account_res = $user_res->account;
+                    $user = User::findOrFail($reservation->user_id);
+                    $parking = Parking::findOrFail($reservation->parking_id);
+                    $account = $user->account;
 
-                    $user_arr = [
-                        'account' => $account_res - $parking_res->price_of_reservation_penalty
+                    $user_data = [
+                        'account' => $account - $parking->price_of_reservation_penalty
                     ];
 
-                    $user_res->updateUser($user_arr);
-                    $user_res->save();
+                    $user->updateUser($user_data);
+                    $user->save();
                 }
 
-                Reservation::where('user_id', $value->user_id)->delete();
+                Reservation::where('user_id', $reservation->user_id)->delete();
             }
         }
     }

@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             @foreach ($adminList as $admin)
-                <h4 class="text-center border-btm p-1">Administrators</h4>
+                <h4 class="text-center text-warning p-1">- Administrators -</h4>
                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 px-3 py-5 d-inline-block">
                     <div>
                         @if (!empty($admin->first_name . $admin->last_name))
@@ -41,7 +41,7 @@
                 </div>
             @endforeach
             @foreach ($moderatorList as $moderator)
-                <h4 class="text-center border-btm p-1">Moderators</h4>
+                <h4 class="text-center text-warning p-1">- Moderators -</h4>
                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 px-3 py-5 d-inline-block">
                     <div>
                         @if (!empty($moderator->first_name . $moderator->last_name))
@@ -71,7 +71,7 @@
                 </div>
             @endforeach
             @foreach ($subList as $subscriber)
-                <h4 class="text-center border-btm p-1">Subscribers</h4>
+                <h4 class="text-center text-warning p-1">- Subscribers -</h4>
                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 px-3 py-5 d-inline-block">
                     <div>
                         @if (!empty($subscriber->first_name . $subscriber->last_name))

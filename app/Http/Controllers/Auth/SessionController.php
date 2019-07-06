@@ -71,6 +71,6 @@ class SessionController extends Controller
         $result = $this->authManager->logout(null, null);
 
         // Return the appropriate response
-        return $result->dispatch(route('dashboard'));
+        return $result->dispatch(route('home'));
     }
 }

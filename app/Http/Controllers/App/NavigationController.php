@@ -23,4 +23,9 @@ class NavigationController extends Controller
 
         return view('centaur.user.dashboard')->with($currentActivity);
     }
+
+    public function update_profile()
+    {
+        
+    }
 }

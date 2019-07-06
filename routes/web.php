@@ -46,24 +46,26 @@ Route::prefix('simulator')->group(function () {
 });
 
 // Navbar
-Route::get('/', 'App\NavigationController@index');
+Route::get('/', ['as' => 'home', 'uses' => 'App\NavigationController@index']);
 
 Route::get('dashboard',
     ['as' => 'dashboard', 'uses' => 'App\NavigationController@dashboard', 'middleware' => 'sentinel.auth']);
+Route::post('dashboard',
+    ['as' => 'profile_form', 'uses' => 'App\NavigationController@update_profile', 'middleware' => 'sentinel.auth']);
 
-Route::prefix('view')->group(function () {
-    Route::get('/', ['as' => 'view_parking', 'uses' => 'App\ParkingsController@selectParking', 'middleware' => 'sentinel.auth']);
+Route::group(['prefix' => 'view', 'middleware' => 'sentinel.auth'], function () {
+    Route::get('/', ['as' => 'view_parking', 'uses' => 'App\ParkingsController@selectParking']);
     Route::post('/', ['as' => 'form_view_parking', 'uses' => 'App\ParkingsController@getParking']);
-    Route::get('/{slug}', ['as' => 'view_parking_lot', 'uses' => 'SelectController@view_parking', 'middleware' => 'sentinel.auth']);
+    Route::get('/{slug}', ['as' => 'view_parking_lot', 'uses' => 'SelectController@view_parking']);
     Route::post('/{slug}', ['as' => 'reservation_parking', 'uses' => 'ReservationsController@reservations']);
 });
 
-Route::get('create',
-    ['as' => 'create_parking', 'uses' => 'App\ParkingsController@create']);
-Route::post('create',
+Route::get('register_parking',
+    ['as' => 'register_edit_parking', 'uses' => 'App\ParkingsController@registerOrEdit']);
+Route::post('register_parking',
     ['as' => 'store_parking', 'uses' => 'App\ParkingsController@store']);
 
-Route::prefix('update')->group(function () {
-    Route::get('/{id}', ['as' => 'edit_parking', 'uses' => 'App\ParkingsController@edit', 'middleware' => 'sentinel.auth']);
-    Route::post('/{id}', ['as' => 'update_parking', 'uses' => 'App\ParkingsController@update']);
+Route::group(['prefix' => 'update', 'middleware' => 'sentinel.auth'], function() {
+    Route::get('/', ['as' => 'edit_parking', 'uses' => 'App\ParkingsController@selectParking']);
+    Route::post('/', ['as' => 'update_parking', 'uses' => 'App\ParkingsController@registerOrEdit']);
 });
