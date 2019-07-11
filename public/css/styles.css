@@ -1,0 +1,178 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito);
+
+:root {
+    --font-family-sans-serif: "Nunito", sans-serif;
+}
+
+html {
+  height: 100%;
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background-color: #f8f9fa;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  font-family: "Nunito", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #212529;
+  text-align: left;
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.app-background {
+    background: url('../images/background.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.navbar {
+    font-size: 1.1rem;
+}
+
+.navbar-brand {
+  display: inline-block;
+  padding-top: 0;
+  padding-bottom: 0.20rem;
+  margin-right: 1rem;
+  font-size: 1.5rem;
+  line-height: inherit;
+  white-space: nowrap;
+  font-family: 'Nunito', sans-serif;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+  text-decoration: none;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 10rem;
+  padding: 0.5rem 0;
+  margin: 0.125rem 0 0;
+  font-size: 0.9rem;
+  color: #212529;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+}
+
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 0.25rem 1.5rem;
+  clear: both;
+  font-weight: 400;
+  color: #212529;
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  color: #16181b;
+  text-decoration: none;
+  background-color: #f8f9fa;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  color: #fff;
+  text-decoration: none;
+  background-color: #3490dc;
+}
+
+#login-dp{
+    min-width: 250px;
+    padding: 20px;
+    overflow:hidden;
+    background-color:rgba(255,255,255, 0.8);
+}
+
+.forgot-password {
+    -webkit-appearance: none;
+}
+
+.city-parking {
+    margin-top: 17%;
+}
+
+.city-parking .jumbotron {
+    background-color: transparent;
+    font-size: 2rem;
+    text-shadow: 1px 1px grey;
+    color: #fff;
+}
+
+.track-slider {
+    width: 0;
+    height: 5px;
+    margin-top: 80px;
+    background-color: rgba(52, 144, 220, 0.7);
+    opacity: 0;
+}
+
+.content-slider,
+.content-section {
+    margin-top: 50px;
+    padding: 20px;
+    color: #fff;
+    background-color: rgba(135, 135, 135, 0.4);
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+.content-slider {
+    opacity: 0;
+    height: 0;
+}
+
+.btn-dashboard-info,
+.btn-dashboard-yellow {
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.btn-dashboard-yellow {
+    border: 1px solid #ffed4a;
+}
+
+.btn-dashboard-info {
+    border: 1px solid #6cb2eb;
+}
+
+.border-btm {
+    padding-bottom: 10px !important;
+    border-bottom: 1px solid #6cb2eb;
+}
+
+#app-analysis,
+#profile-info {
+    display: none;
+}
+
+@media(max-width:768px){
+    #login-dp{
+        background-color: inherit;
+        color: #fff;
+    }
+}
