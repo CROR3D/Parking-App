@@ -4,6 +4,14 @@
     --font-family-sans-serif: "Nunito", sans-serif;
 }
 
+a {
+  outline: none;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
 html {
   height: 100%;
   font-family: sans-serif;
@@ -35,6 +43,7 @@ body {
 
 .navbar {
     font-size: 1.1rem;
+    background-image: linear-gradient(rgba(140, 140, 140, 0.7), rgba(40, 40, 40, 0.4));
 }
 
 .navbar-brand {
@@ -46,6 +55,10 @@ body {
   line-height: inherit;
   white-space: nowrap;
   font-family: 'Nunito', sans-serif;
+}
+
+.navbar-text {
+    margin-bottom: 0;
 }
 
 .navbar-brand:hover,
@@ -135,9 +148,7 @@ body {
     margin-top: 50px;
     padding: 20px;
     color: #fff;
-    background-color: rgba(135, 135, 135, 0.4);
-    border: 1px solid grey;
-    border-radius: 5px;
+    background-image: linear-gradient(rgba(140, 140, 140, 0.7), rgba(40, 40, 40, 0.4));
 }
 
 .content-slider {
@@ -147,17 +158,28 @@ body {
 
 .btn-dashboard-info,
 .btn-dashboard-yellow {
-    border-radius: 4px;
     color: #fff;
     font-size: 16px;
+    margin: 5px;
 }
 
-.btn-dashboard-yellow {
-    border: 1px solid #ffed4a;
+.btn-dashboard-info:after,
+.btn-dashboard-yellow:after {
+  display:block;
+  content: '';
+  border-bottom: solid 1px #6cb2eb;
+  transform: scaleX(0);
+  transition: transform 250ms ease-in-out;
 }
 
-.btn-dashboard-info {
-    border: 1px solid #6cb2eb;
+.btn-dashboard-info:hover:after,
+.btn-dashboard-yellow:hover:after {
+    transform: scaleX(1);
+}
+
+.btn-dashboard-info:after,
+.btn-dashboard-yellow:after {
+    transform-origin: 0% 50%;
 }
 
 .border-btm {

@@ -4,26 +4,41 @@ import ContentSection from './dashboardComponents/ContentSection';
 import ButtonHeader from './dashboardComponents/ButtonHeader';
 import SectionTitle from './dashboardComponents/SectionTitle';
 import CurrentActivity from './dashboardComponents/CurrentActivity';
+import AppAnalysis from './dashboardComponents/AppAnalysis';
 
 class Dashboard extends Component
 {
     constructor(props) {
-        super(props);
+        super();
         this.state = {
-            id: 'user-info',
-            title: 'User Information',
-            currentSubPage: 'UserInformation',
+            subPages: {
+                userInformation: {
+                    id: 'user-info',
+                    title: 'User Information',
+                },
+                appAnalysis: {
+                    id: 'app-analysis',
+                    title: 'Application Analysis',
+                },
+                profileInformation: {
+                    id: 'profile-info',
+                    title: 'Profile Information',
+                },
+            },
+            currentSubPage: function() {
+                return this.subPages['userInformation'];
+            },
             pageData: JSON.parse(props.pageData)
         }
     }
 
     getSubPage() {
-        switch(this.state.currentSubPage) {
-            case 'UserInformation':
+        switch(this.state.currentSubPage().id) {
+            case 'user-info':
                 return <CurrentActivity />;
-            case 'AppAnalysis':
-                return null;
-            case 'ProfileInformation':
+            case 'app-analysis':
+                return <AppAnalysis />;
+            case 'profile-info':
                 return null;
             default:
                 return null;
@@ -34,9 +49,9 @@ class Dashboard extends Component
         return (
             <div className="container">
                 <Fragment>
-                    <ContentSection id={this.state.id}>
+                    <ContentSection id="user-info">
                         <ButtonHeader role={this.state.pageData.role} />
-                        <SectionTitle title={this.state.title} role={this.state.pageData.role} />
+                        <SectionTitle title="user-info" role={this.state.pageData.role} />
                         {this.getSubPage()}
                     </ContentSection>
                 </Fragment>

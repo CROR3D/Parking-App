@@ -3,10 +3,6 @@ import ReactDOM from 'react-dom';
 
 class ButtonHeader extends Component
 {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className="text-right mb-3">

@@ -3,10 +3,6 @@ import ReactDOM from 'react-dom';
 
 class SectionTitle extends Component
 {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className="text-center mb-5">

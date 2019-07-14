@@ -3,10 +3,6 @@ import ReactDOM from 'react-dom';
 
 class CurrentActivity extends Component
 {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className="mb-3">
