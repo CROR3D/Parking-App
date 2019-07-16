@@ -1,60 +1,69 @@
 import React, { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import ContentSection from './dashboardComponents/ContentSection';
-import ButtonHeader from './dashboardComponents/ButtonHeader';
+import NavHeader from './dashboardComponents/NavHeader';
 import SectionTitle from './dashboardComponents/SectionTitle';
 import CurrentActivity from './dashboardComponents/CurrentActivity';
 import AppAnalysis from './dashboardComponents/AppAnalysis';
+import ProfileInfo from './dashboardComponents/ProfileInfo';
 
 class Dashboard extends Component
 {
     constructor(props) {
-        super();
+        super(props);
+
         this.state = {
             subPages: {
                 userInformation: {
-                    id: 'user-info',
-                    title: 'User Information',
+                    id: 'userInformation',
+                    title: 'User Information'
                 },
                 appAnalysis: {
-                    id: 'app-analysis',
-                    title: 'Application Analysis',
+                    id: 'appAnalysis',
+                    title: 'Application Analysis'
                 },
                 profileInformation: {
-                    id: 'profile-info',
-                    title: 'Profile Information',
+                    id: 'profileInformation',
+                    title: 'Profile Information'
                 },
             },
-            currentSubPage: function() {
-                return this.subPages['userInformation'];
+            currentSubPage: {
+                id: 'userInformation',
+                title: 'User Information'
             },
             pageData: JSON.parse(props.pageData)
         }
     }
 
-    getSubPage() {
-        switch(this.state.currentSubPage().id) {
-            case 'user-info':
-                return <CurrentActivity />;
-            case 'app-analysis':
+    setCurrentSubPage(newPage) {
+        let getSubPage = page => this.state.subPages[page];
+        let newSubPage = getSubPage(newPage);
+        this.setState({ currentSubPage: newSubPage });
+    }
+
+    displaySubPage() {
+        switch(this.state.currentSubPage.id) {
+            case 'appAnalysis':
                 return <AppAnalysis />;
-            case 'profile-info':
-                return null;
+            case 'profileInformation':
+                return <ProfileInfo />;
             default:
-                return null;
+                return <CurrentActivity />;
         }
     }
 
     render() {
+        let {subPages, currentSubPage, pageData} = this.state;
+
         return (
             <div className="container">
-                <Fragment>
-                    <ContentSection id="user-info">
-                        <ButtonHeader role={this.state.pageData.role} />
-                        <SectionTitle title="user-info" role={this.state.pageData.role} />
-                        {this.getSubPage()}
-                    </ContentSection>
-                </Fragment>
+                <ContentSection id={currentSubPage.id}>
+                    <NavHeader role={pageData.role} currentPage={currentSubPage}
+                        subPages={subPages} nextPage={this.setCurrentSubPage.bind(this)}/>
+                    <SectionTitle title={currentSubPage.title} role={pageData.role} />
+                    {this.displaySubPage()}
+                </ContentSection>
             </div>
         );
     }
