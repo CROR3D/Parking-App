@@ -51,13 +51,13 @@ Route::get('/', ['as' => 'home', 'uses' => 'App\NavigationController@index']);
 Route::get('dashboard',
     ['as' => 'dashboard', 'uses' => 'App\NavigationController@dashboard', 'middleware' => 'sentinel.auth']);
 Route::post('dashboard',
-    ['as' => 'profile_form', 'uses' => 'App\NavigationController@update_profile', 'middleware' => 'sentinel.auth']);
+    ['as' => 'profile_form', 'uses' => 'App\NavigationController@updateProfile', 'middleware' => 'sentinel.auth']);
 
 Route::group(['prefix' => 'view', 'middleware' => 'sentinel.auth'], function () {
     Route::get('/', ['as' => 'view_parking', 'uses' => 'App\ParkingsController@selectParking']);
     Route::post('/', ['as' => 'form_view_parking', 'uses' => 'App\ParkingsController@getParking']);
-    Route::get('/{slug}', ['as' => 'view_parking_lot', 'uses' => 'SelectController@view_parking']);
-    Route::post('/{slug}', ['as' => 'reservation_parking', 'uses' => 'ReservationsController@reservations']);
+    Route::get('/{slug}', ['as' => 'view_parking_lot', 'uses' => 'App\ParkingsController@viewParkingLot']);
+    Route::post('/{slug}', ['as' => 'reservation_parking', 'uses' => 'App\ReservationsController@createReservation']);
 });
 
 Route::get('register_parking',

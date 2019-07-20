@@ -49,7 +49,7 @@ class Dashboard extends Component
             case 'profileInformation':
                 return <ProfileInfo />;
             default:
-                return <CurrentActivity />;
+                return <CurrentActivity pageData={this.state.pageData} />;
         }
     }
 

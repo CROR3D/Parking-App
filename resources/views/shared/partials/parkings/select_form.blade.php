@@ -5,7 +5,9 @@
             <select class="form-control" name="select_city" id="select1">
                 <option>---</option>
                 @foreach($city_list as $city)
-                      <option class="dropdown-item" value="{{ $city_values[$city->city] }}">{{ $city->city }}</option>
+                      <option class="dropdown-item" value="{{ $city_values[$city->city] }}">
+                          {{ $city->city }}
+                      </option>
                 @endforeach
             </select>
     </div>
@@ -14,7 +16,9 @@
             <select class="form-control" name="select_parking" id="select2" disabled>
                 <option></option>
                 @foreach($parking_list as $parking)
-                      <option name="{{ $parking->slug }}" class="dropdown-item" value="{{ $parking_values[$parking->slug] }}">{{ $parking->name }}</option>
+                      <option class="dropdown-item" name="{{ $parking->id }}" value="{{ $parking_values[$parking->slug] }}">
+                          {{ $parking->name }}
+                      </option>
                 @endforeach
             </select>
     </div>

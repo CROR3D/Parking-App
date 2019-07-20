@@ -62517,7 +62517,9 @@ function (_Component) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_ProfileInfo__WEBPACK_IMPORTED_MODULE_8__["default"], null);
 
         default:
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_CurrentActivity__WEBPACK_IMPORTED_MODULE_6__["default"], null);
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_CurrentActivity__WEBPACK_IMPORTED_MODULE_6__["default"], {
+            pageData: this.state.pageData
+          });
       }
     }
   }, {
@@ -62529,7 +62531,7 @@ function (_Component) {
           pageData = _this$state.pageData;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
-      }, console.log(this.state), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_ContentSection__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_ContentSection__WEBPACK_IMPORTED_MODULE_3__["default"], {
         id: currentSubPage.id
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dashboardComponents_NavHeader__WEBPACK_IMPORTED_MODULE_4__["default"], {
         role: pageData.role,
@@ -62729,25 +62731,25 @@ function (_Component) {
   _createClass(CurrentActivity, [{
     key: "render",
     value: function render() {
+      var _this$props$pageData = this.props.pageData,
+          reservation = _this$props$pageData.reservation,
+          parked = _this$props$pageData.parked,
+          hasMessages = _this$props$pageData.hasMessages;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "mb-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Current Activity:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "ml-5"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Reservation:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "ml-5"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "City: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "text-warning mb-2"
+      }, "Current Activity"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, reservation && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Reservation:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "City: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "text-warning"
-      }, "Zadar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Parking: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, reservation.city)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Parking: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "text-warning"
-      }, "Fo\u0161a")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Reservation created: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, reservation.parking)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Reservation created: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "text-warning"
-      }, "01.01.2019 14:30")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Reservation expires: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, reservation.created)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Reservation expires: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "text-warning"
-      }, "01.01.2019 15:00")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Access code: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, reservation.expires)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Access code: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "text-warning"
-      }, "1234"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Location:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "ml-5"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "City: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, reservation.code)))), parked && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Location:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "City: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "text-warning"
       }, "Zadar")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Parking: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "text-warning"
@@ -62758,7 +62760,7 @@ function (_Component) {
       }, "00:43:21")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "btn btn-md btn-dashboard-yellow",
         href: "#"
-      }, "Pay Ticket")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "No current activity")));
+      }, "Pay Ticket"))), !reservation && !parked && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "No current activity"))));
     }
   }]);
 
@@ -62842,7 +62844,7 @@ function (_Component) {
       pages.forEach(function (page, index) {
         anchors.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           key: index,
-          className: "btn btn-md btn-dashboard-yellow sw-content mr-1",
+          className: "btn btn-md btn-dashboard-nav sw-content mr-1",
           href: "#",
           value: page.id,
           onClick: _this.changePage.bind(_this)
@@ -62916,7 +62918,122 @@ function (_Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "mb-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Profile Info"));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        acceptCharset: "UTF-8",
+        role: "form",
+        method: "post",
+        action: ""
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-6 offset-md-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mb-4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Username: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "username_input",
+        className: "form-control",
+        type: "text",
+        name: "username",
+        value: "",
+        readOnly: true
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        id: "change_username",
+        className: "btn btn-default btn-dashboard-yellow"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "glyphicon glyphicon-edit",
+        "aria-hidden": "true"
+      }), "Change"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        id: "save_username",
+        className: "btn btn-default btn-dashboard-info"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "glyphicon glyphicon-edit",
+        "aria-hidden": "true"
+      }), "Save Changes")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mb-4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Email: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "email_input",
+        className: "form-control",
+        type: "text",
+        name: "email",
+        value: "",
+        readOnly: true
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        id: "change_email",
+        className: "btn btn-default btn-dashboard-yellow"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "glyphicon glyphicon-edit",
+        "aria-hidden": "true"
+      }), "Change"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        id: "save_email",
+        className: "btn btn-default btn-dashboard-info"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "glyphicon glyphicon-edit",
+        "aria-hidden": "true"
+      }), "Save Changes")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mb-4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Change password: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "ml-5"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Old password: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-control",
+        type: "text",
+        name: "old_password"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "New password: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-control",
+        type: "password",
+        name: "new_password"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Confirm new password: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-control",
+        type: "password",
+        name: "confirm_password"
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mb-4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Credit card information"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "ml-5"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Credit card number: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "card_input",
+        className: "form-control",
+        type: "text",
+        name: "credit_card",
+        value: "",
+        readOnly: true
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        id: "change_card",
+        className: "btn btn-default btn-dashboard-yellow"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "glyphicon glyphicon-edit",
+        "aria-hidden": "true"
+      }), "Change"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        id: "save_card",
+        className: "btn btn-default btn-dashboard-info"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "glyphicon glyphicon-edit",
+        "aria-hidden": "true"
+      }), "Save Changes"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mb-4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Pull from card: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-control",
+        type: "number",
+        name: "account",
+        min: "0"
+      }), " kn"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-md btn-dashboard-info",
+        type: "submit",
+        name: "profile_data"
+      }, "Submit data")))));
     }
   }]);
 

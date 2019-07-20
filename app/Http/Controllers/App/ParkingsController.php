@@ -41,19 +41,27 @@ class ParkingsController extends Controller
 
     public function getParking(Request $request)
     {
-        $parking = $this->getParkingLot($request);
+        $parking = Parking::findOrFail($request->selected);
 
         if(!$parking) {
             session()->flash('info', 'Please select parking lot you want to view.');
             return redirect()->route('view_parking');
         }
 
+        return redirect()->route('view_parking_lot', ['slug' => $parking->slug]);
+    }
+
+    public function viewParkingLot($slug)
+    {
+        $parking = Parking::where('slug', $slug)->first();
+
         return view('centaur.user.parkings.parking')->with('parking', $parking);
     }
 
     public function registerOrEdit(Request $request)
     {
-        $parking = $this->getParkingLot($request);
+        $parking = Parking::findOrFail($request->selected);
+
         return view('centaur.admin.parkings.register_edit')->with('parking', $parking);
     }
 
@@ -106,11 +114,5 @@ class ParkingsController extends Controller
         }
 
         return $page_data;
-    }
-
-    private function getParkingLot(Request $request)
-    {
-        $slug = $request->selected;
-        return Parking::where('slug', $slug)->first();
     }
 }

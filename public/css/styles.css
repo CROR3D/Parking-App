@@ -80,10 +80,11 @@ body {
   color: #212529;
   text-align: left;
   list-style: none;
-  background-color: #fff;
+  background-color: transparent;
+  background-image: linear-gradient(rgba(140, 140, 140, 0.7), rgba(40, 40, 40, 0.4));
   background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 0.25rem;
+  border: 0;
+  border-radius: 0;
 }
 
 .dropdown-item {
@@ -124,6 +125,23 @@ body {
     -webkit-appearance: none;
 }
 
+.alert {
+    border: none;
+    border-radius: 0;
+}
+
+.alert-primary,
+.alert-secondary,
+.alert-danger,
+.alert-success,
+.alert-info {
+    color: #fff;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    background-color: transparent;
+    background-image: linear-gradient(rgba(140, 140, 140, 0.7), rgba(40, 40, 40, 0.4));
+}
+
 .city-parking {
     margin-top: 17%;
 }
@@ -157,14 +175,14 @@ body {
 }
 
 .btn-dashboard-info,
-.btn-dashboard-yellow {
+.btn-dashboard-nav {
     color: #fff;
     font-size: 16px;
     margin: 5px;
 }
 
 .btn-dashboard-info:after,
-.btn-dashboard-yellow:after {
+.btn-dashboard-nav:after {
   display:block;
   content: '';
   border-bottom: solid 1px #6cb2eb;
@@ -173,12 +191,12 @@ body {
 }
 
 .btn-dashboard-info:hover:after,
-.btn-dashboard-yellow:hover:after {
+.btn-dashboard-nav:hover:after {
     transform: scaleX(1);
 }
 
 .btn-dashboard-info:after,
-.btn-dashboard-yellow:after {
+.btn-dashboard-nav:after {
     transform-origin: 0% 50%;
 }
 

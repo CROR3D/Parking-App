@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use Sentinel;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Parking;
@@ -26,8 +27,7 @@ class StaticManager
                         'account' => $account - $parking->price_of_reservation_penalty
                     ];
 
-                    $user->updateUser($user_data);
-                    $user->save();
+                    Sentinel::update($user, $user_data);
                 }
 
                 Reservation::where('user_id', $reservation->user_id)->delete();

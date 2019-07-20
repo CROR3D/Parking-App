@@ -22,7 +22,7 @@ class NavHeader extends Component
 
         pages.forEach((page, index) => {
             anchors.push(
-                <a key={index} className="btn btn-md btn-dashboard-yellow sw-content mr-1" href="#" value={page.id} onClick={this.changePage.bind(this)}>{page.title}</a>
+                <a key={index} className="btn btn-md btn-dashboard-nav sw-content mr-1" href="#" value={page.id} onClick={this.changePage.bind(this)}>{page.title}</a>
             );
         });
 
