@@ -62472,15 +62472,18 @@ function (_Component) {
       subPages: {
         userInformation: {
           id: 'userInformation',
-          title: 'User Information'
+          title: 'User Information',
+          authorize: 'all'
         },
         appAnalysis: {
           id: 'appAnalysis',
-          title: 'Application Analysis'
+          title: 'Application Analysis',
+          authorize: 'Administrator'
         },
         profileInformation: {
           id: 'profileInformation',
-          title: 'Profile Information'
+          title: 'Profile Information',
+          authorize: 'all'
         }
       },
       currentSubPage: {
@@ -62828,6 +62831,7 @@ function (_Component) {
       var _this = this;
 
       var _this$props = this.props,
+          role = _this$props.role,
           currentPage = _this$props.currentPage,
           subPages = _this$props.subPages;
       var pages = [],
@@ -62837,6 +62841,7 @@ function (_Component) {
         var page = subPages[property];
 
         if (page.id != currentPage.id) {
+          if (page.authorize != 'all' && page.authorize != role) continue;
           pages.push(page);
         }
       }
@@ -62928,112 +62933,78 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-md-6 offset-md-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "mb-4"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Username: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group"
+        className: "profile-form-group mb-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         id: "username_input",
-        className: "form-control",
+        className: "profile-input",
         type: "text",
-        name: "username",
-        value: "",
-        readOnly: true
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        id: "change_username",
-        className: "btn btn-default btn-dashboard-yellow"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "glyphicon glyphicon-edit",
-        "aria-hidden": "true"
-      }), "Change"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        id: "save_username",
-        className: "btn btn-default btn-dashboard-info"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "glyphicon glyphicon-edit",
-        "aria-hidden": "true"
-      }), "Save Changes")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "mb-4"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Email: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group"
+        name: "username"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "profile-input-focus",
+        "data-placeholder": "Username"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "profile-form-group mb-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         id: "email_input",
-        className: "form-control",
+        className: "profile-input",
         type: "text",
-        name: "email",
-        value: "",
-        readOnly: true
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        id: "change_email",
-        className: "btn btn-default btn-dashboard-yellow"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "glyphicon glyphicon-edit",
-        "aria-hidden": "true"
-      }), "Change"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        id: "save_email",
-        className: "btn btn-default btn-dashboard-info"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "glyphicon glyphicon-edit",
-        "aria-hidden": "true"
-      }), "Save Changes")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "mb-4"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Change password: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "ml-5"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Old password: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group"
+        name: "email"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "profile-input-focus",
+        "data-placeholder": "Email"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "profile-form-group mb-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "form-control",
+        className: "profile-input",
         type: "text",
         name: "old_password"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "profile-input-focus",
+        "data-placeholder": "Old Password"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "New password: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "form-control",
-        type: "password",
-        name: "new_password"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Confirm new password: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "form-control",
-        type: "password",
-        name: "confirm_password"
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "mb-4"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Credit card information"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "ml-5"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Credit card number: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group"
+        className: "profile-form-group mb-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        id: "card_input",
-        className: "form-control",
+        className: "profile-input",
         type: "text",
-        name: "credit_card",
-        value: "",
-        readOnly: true
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        id: "change_card",
-        className: "btn btn-default btn-dashboard-yellow"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "glyphicon glyphicon-edit",
-        "aria-hidden": "true"
-      }), "Change"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        id: "save_card",
-        className: "btn btn-default btn-dashboard-info"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "glyphicon glyphicon-edit",
-        "aria-hidden": "true"
-      }), "Save Changes"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "mb-4"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Pull from card: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group"
+        name: "new_password"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "profile-input-focus",
+        "data-placeholder": "New Password"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "profile-form-group mb-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "form-control",
-        type: "number",
+        className: "profile-input",
+        type: "text",
+        name: "confirm_password"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "profile-input-focus",
+        "data-placeholder": "Confirm New Password"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "profile-form-group mb-4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "profile-input",
+        type: "text",
+        name: "credit_card"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "profile-input-focus",
+        "data-placeholder": "Credit Card Number"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "profile-form-group mb-4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "profile-input",
+        type: "text",
         name: "account",
         min: "0"
-      }), " kn"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "profile-input-focus",
+        "data-placeholder": "Pull From The Account"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-6 mx-auto text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-md btn-dashboard-info",
         type: "submit",
         name: "profile_data"
-      }, "Submit data")))));
+      }, "Submit data"))))));
     }
   }]);
 

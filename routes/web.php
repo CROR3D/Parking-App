@@ -57,7 +57,7 @@ Route::group(['prefix' => 'view', 'middleware' => 'sentinel.auth'], function () 
     Route::get('/', ['as' => 'view_parking', 'uses' => 'App\ParkingsController@selectParking']);
     Route::post('/', ['as' => 'form_view_parking', 'uses' => 'App\ParkingsController@getParking']);
     Route::get('/{slug}', ['as' => 'view_parking_lot', 'uses' => 'App\ParkingsController@viewParkingLot']);
-    Route::post('/{slug}', ['as' => 'reservation_parking', 'uses' => 'App\ReservationsController@createReservation']);
+    Route::post('/{id}', ['as' => 'reservation_parking', 'uses' => 'App\ReservationsController@createReservation']);
 });
 
 Route::get('register_parking',

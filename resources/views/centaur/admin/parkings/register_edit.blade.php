@@ -10,8 +10,9 @@
 <div class="content-section p-5">
     <h2 class="text-center mb-5">Register Parking Lot</h2>
         <form accept-charset="UTF-8" role="form" method="post" action="{{ route('store_parking') }}">
+            {{ csrf_field() }}
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 offset-md-3">
                     <div class="form-group">
                         City:
                         <div class="p-1">
@@ -40,8 +41,6 @@
                             {!! ($errors->has('image')) ? $errors->first('image', '<p class="text-danger">:message</p>') : '' !!}
                         </div>
                     </div>
-                  </div>
-                  <div class="col-md-4 offset-md-2">
                       <div class="form-group">
                           Number of parking spots:
                           <div class="p-1">
@@ -85,10 +84,7 @@
                           {!! ($errors->has('price_of_reservation_penalty')) ? $errors->first('price_of_reservation_penalty', '<p class="text-danger">:message</p>') : '' !!}
                           {!! ($errors->has('price_of_reservation_penalty_two')) ? $errors->first('price_of_reservation_penalty_two', '<p class="text-danger">:message</p>') : '' !!}
                       </div>
-                  </div>
-                  {{ csrf_field() }}
-                  <div class="col-md-12 mt-5">
-                      <div class="form-group">
+                      <div class="form-group mt-5">
                           <input class="btn btn-md btn-primary btn-block" type="submit" value="Register" />
                       </div>
                   </div>

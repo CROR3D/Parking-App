@@ -32,7 +32,6 @@ class NavigationController extends Controller
         if($userReservation) $userReservationParking = Parking::findOrFail($userReservation->parking_id);
         if($userTicket) $userParking = Parking::findOrFail($userTicket->parking_id);
 
-        // TODO get reservation with user_id
         $currentActivity = [
             'reservation' =>
                 (!$userReservation) ? null : [

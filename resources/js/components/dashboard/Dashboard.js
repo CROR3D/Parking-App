@@ -17,15 +17,18 @@ class Dashboard extends Component
             subPages: {
                 userInformation: {
                     id: 'userInformation',
-                    title: 'User Information'
+                    title: 'User Information',
+                    authorize: 'all'
                 },
                 appAnalysis: {
                     id: 'appAnalysis',
-                    title: 'Application Analysis'
+                    title: 'Application Analysis',
+                    authorize: 'Administrator'
                 },
                 profileInformation: {
                     id: 'profileInformation',
-                    title: 'Profile Information'
+                    title: 'Profile Information',
+                    authorize: 'all'
                 },
             },
             currentSubPage: {

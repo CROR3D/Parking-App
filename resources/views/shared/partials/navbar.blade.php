@@ -17,8 +17,8 @@
                 </li>
                 @endif
                 @if (Sentinel::check() && !Sentinel::inRole('administrator'))
-                <li class="{{ Request::is('/view') ? 'active' : '' }}">
-                    <a href="{{ route('view') }}">View Parking</a>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('/view') ? 'active' : '' }}" href="{{ route('view_parking') }}">View Parking</a>
                 </li>
                 @endif
                 @if (Sentinel::check() && Sentinel::inRole('administrator'))

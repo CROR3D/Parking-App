@@ -9,13 +9,14 @@ class NavHeader extends Component
     }
 
     displayButtons() {
-        let { currentPage, subPages } = this.props;
+        let { role, currentPage, subPages } = this.props;
         let pages = [],
             anchors = [];
 
         for (let property in subPages) {
             let page = subPages[property];
             if (page.id != currentPage.id) {
+                if(page.authorize != 'all' && page.authorize != role) continue;
                 pages.push(page);
             }
         }

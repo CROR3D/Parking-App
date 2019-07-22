@@ -60,7 +60,7 @@ class ParkingsController extends Controller
 
     public function registerOrEdit(Request $request)
     {
-        $parking = Parking::findOrFail($request->selected);
+        $parking = Parking::find($request->selected);
 
         return view('centaur.admin.parkings.register_edit')->with('parking', $parking);
     }
