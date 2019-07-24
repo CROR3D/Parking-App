@@ -8,7 +8,7 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
+                <li id="content" class="nav-item">
                     <a class="nav-link {{ Request::is('/simulator') ? 'active' : '' }}" href="{{ route('simulator') }}">Simulator</a>
                 </li>
                 @if (Sentinel::check())
@@ -45,8 +45,8 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if(Sentinel::check())
-                    <li class="nav-item">
-                        <p class="navbar-text">Welcome, <span class="text-info">{{ (Sentinel::getUser()->username) ? Sentinel::getUser()->username : Sentinel::getUser()->email }}</span></p>
+                    <li class="nav-item notification-item">
+                        @include('Centaur::notifications')
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('auth.logout') }}">Log Out</a>

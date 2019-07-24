@@ -47,22 +47,22 @@ class ReservationsController extends Controller
         $validation = [
             [
                 Reservation::where('user_id', $user->id)->exists(),
-                'You already have reservation!'
+                'Already have reservation!'
             ],
             [
                 $spotsTotal <= $spotsTaken,
-                'This parking lot is full!'
+                'Parking lot is full!'
             ],
             [
                 Ticket::where('userable_id', $user->id)->exists(),
-                'Can\'t reserve spot! Your pressence is already located in ' . $parking->city . ' (' . $parking->name . ')!'
+                'Can\'t reserve spot! Located on ' . $parking->name . '!'
             ],
             [
                 $user->account < $accountMin,
-                'You don\'t have enough money on your account to make this reservation (' . ($accountMin) . 'kn needed)!'
+                'Not enough money on account (' . $accountMin . 'kn needed)!'
             ]
         ];
-        
+
         for($i = 0; $i < count($validation); $i++) {
             if($validation[$i][0]) {
                 $flashMessage = $validation[$i][1];

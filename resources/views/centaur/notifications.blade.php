@@ -1,24 +1,30 @@
 <?php
-
     $vars = Session::all();
+    $errors = false;
     foreach ($vars as $key => $value) {
         switch($key) {
             case 'success':
             case 'error':
             case 'warning':
             case 'info':
-                ?>
-                <div class="row mt-5">
-                    <div class="alert alert-{{ ($key == 'error') ? 'danger' : $key }} alert-dismissable col-md-12">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <strong>{{ ucfirst($key) }}:</strong> {!! $value !!}
-                    </div>
-                </div>
-                <?php
-                Session::forget($key);
+                $errors = true;
                 break;
             default:
         }
     }
-
 ?>
+
+@if($errors)
+    <p class="navbar-notification error-catch">
+        <span class="text-info">
+            {!! $value !!}
+        </span>
+    </p>
+    <?php Session::forget($key); ?>
+@else
+    <p class="navbar-notification error-none">Welcome,
+        <span class="text-info">
+            {{ (Sentinel::getUser()->username) ? Sentinel::getUser()->username : Sentinel::getUser()->email }}
+        </span>
+    </p>
+@endif

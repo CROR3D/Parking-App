@@ -18,7 +18,6 @@
         @include('shared.partials.navbar')
 
         <div class="container">
-            @include('Centaur::notifications')
             @yield('content')
         </div>
 
