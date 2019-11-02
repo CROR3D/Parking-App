@@ -10,7 +10,8 @@ use App\Models\Reservation;
 
 class StaticManager
 {
-    public function deleteExpiredReservations() {
+    public function deleteExpiredReservations() 
+    {
         $now = Carbon::now();
         $expired_reservations = Reservation::where('expire_time', '<', $now)->get();
 
