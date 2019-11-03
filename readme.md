@@ -9,7 +9,7 @@ with the ability to reserve one. Parking entrance and walk/drive around is simul
 
 ## Current Status
 
-IN DEVELOPMENT
+IN DEVELOPMENT 2/5
 
 ## ToDo
 - create simulator
